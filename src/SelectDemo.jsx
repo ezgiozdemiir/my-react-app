@@ -9,24 +9,35 @@ import {
   SelectLabel,
 } from "../@/components/ui/select"; // Adjust the import path according to your file structure
 
-export function SelectDemo({ setSelectedFruit }) {
+export function SelectDemo({ colorOptions, setSelectedColor }) {
   const handleSelectChange = (value) => {
-    setSelectedFruit(value);
+    setSelectedColor(value);
   };
 
   return (
     <Select onValueChange={handleSelectChange}>
       <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a fruit" />
+        <SelectValue placeholder="Select a color" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Fruits</SelectLabel>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes">Grapes</SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem>
+          <SelectLabel>Colors</SelectLabel>
+          {colorOptions.map((color) => (
+            <SelectItem key={color} value={color}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div
+                  style={{
+                    width: '15px',
+                    height: '15px',
+                    backgroundColor: color,
+                    borderRadius: '50%',
+                    marginRight: '10px',
+                  }}
+                ></div>
+                {color}
+              </div>
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>
