@@ -7,25 +7,27 @@ import {
   SelectTrigger,
   SelectValue,
   SelectLabel,
-} from "../@/components/ui/select"; // Adjust the import path according to your file structure
+} from "../@/components/ui/select";
 
-export function SelectDemo({ colorOptions, setSelectedColor }) {
+//colorOptions and setSelectedColor is transfered down to child from "App.jsx"
+export function SelectDemo({ colorOptions, setedColor }) {
+  //handleSelectChange sets the data in SelectDemo and transfer with setSelectedColor(value) to "App.jsx"
   const handleSelectChange = (value) => {
-    setSelectedColor(value);
+    setedColor(value);
   };
 
   return (
     <Select onValueChange={handleSelectChange}>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a color" />
+      <SelectTrigger className="select-trigger">
+        <SelectValue placeholder="Select a color" className="select-placeholder" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="select-content">
         <SelectGroup>
-          <SelectLabel>Colors</SelectLabel>
+          <SelectLabel className="select-label">Colors</SelectLabel>
           {colorOptions.map((color) => (
-            <SelectItem key={color} value={color}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <div
+            <SelectItem key={color} value={color} className="select-item">
+              <div style={{ display: 'flex', alignItems: 'center', backgroundColor:"white" }}>
+                <div  className="select-item-circle"
                   style={{
                     width: '15px',
                     height: '15px',

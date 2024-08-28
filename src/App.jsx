@@ -1,58 +1,71 @@
+import './App.css';
+import Products from './Products/Products';
+import Cart from './Cart/Cart';
+import { Navigation } from './Navigation';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { SelectDemo } from './SelectDemo';
 
-function App() {
-  const [products, setProducts] = useState([]);
-  const [selectedColor, setSelectedColor] = useState({});
 
-  useEffect(() => {
-    fetch('http://localhost:3000/products')
-      .then(response => response.json())
-      .then(data => setProducts(data));
-  }, []);
+ function App() {
+  //App managing the overall state of the cart and passing down the necessary data and functions to its child components (Products and Cart).
+  //Product to Cart.
+  const [cart, setCart] = useState([]);
+  const [totalCost, setTotalCost] = useState(0);
+  const customerBalance = 100000;
 
-  const handleColorChange = (productId, color) => {
-    setSelectedColor(prevState => ({
-      ...prevState,
-      [productId]: color,
-    }));
-  };
+  //This function is passed down to Products.js as a prop. When the user clicks the "Add Cart" button in Products.js, this function is called, allowing App.js to update the cart state.
+  const handleAddingCart = (product, selectedColor, quantity) => {
+    const cost = product.price * quantity;
 
-  return (
-    <div>
-      <h1>Products</h1>
-      <ul>
-        {products.map(product => (
-          <li key={product.id} style={{ marginBottom: '20px' }}>
-            <h2>{product.name}</h2>
-            <p>${product.price}</p>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <div style={{ marginRight: '10px' }}>Select Color:</div>
-              <SelectDemo
-                colorOptions={product.colorOptions}
-                setSelectedColor={(color) => handleColorChange(product.id, color)}
-              />
-            </div>
-            <div style={{ display: 'flex', marginTop: '10px' }}>
-              {product.colorOptions.map(color => (
-                <div
-                  key={color}
-                  style={{
-                    width: '20px',
-                    height: '20px',
-                    backgroundColor: color,
-                    borderRadius: '50%',
-                    marginRight: '10px',
-                    border: selectedColor[product.id] === color ? '2px solid black' : 'none',
-                  }}
-                />
-              ))}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+    //If it would be at the same component, only product will be added in the function. ( setCart(prevCart => [
+      //       ...prevCart, 
+      //       { 
+      //         ...product, 
+      //         selectedColor: selectedColor[product.id], 
+      //         quantity: quantity 
+      //       }
+      //     ]);)
 
-export default App;
+      setCart(prevCart => [
+        ...prevCart, 
+        { 
+          ...product, 
+          selectedColor,
+          quantity
+        }
+      ]);
+    //Works in cart because total cost increases when you add some product to the cart.
+      setTotalCost(prevCost => prevCost + cost)
+    };
+  
+   return (
+     <div className="App">
+      <Navigation></Navigation>
+       <Routes>
+       <Route 
+          path="/" 
+          element={
+            <Products 
+              handleAddingCart={handleAddingCart} 
+              cart={cart} 
+              totalCost={totalCost}
+            />
+          } 
+        />
+        <Route 
+          path="/cart" 
+          element={
+            <Cart 
+              cart={cart} 
+              totalCost={totalCost} 
+              customerBalance={customerBalance} 
+            />
+          } 
+        />
+       </Routes>
+
+     </div>
+   );
+ }
+
+ export default App;

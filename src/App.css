@@ -1,42 +1,97 @@
-#root {
-  max-width: 1280px;
+:root {
+  width: 100%;
+
+}
+
+body{
+  justify-content: center;
+  width: 100%;
+}
+
+.app-container {
   margin: 0 auto;
-  padding: 2rem;
+  padding: 20px;
+}
+
+/* Styling for the header */
+.app-header {
+  text-align: center;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+
+/* Styling for the list of products */
+.product-list {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 0 auto;
+}
+
+/* Styling for each product card */
+.product-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Styling for the product image */
+.product-card img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Styling for the product name */
+.product-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 10px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Styling for the product price */
+.product-card p {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0 0 20px;
+  text-align: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Styling for the color selection container */
+.color-selection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Styling for the color circles */
+.color-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: border 0.2s;
 }
 
-.card {
-  padding: 2em;
+.color-circle.selected {
+  border: 2px solid black;
 }
 
-.read-the-docs {
-  color: #888;
+/* Styling for the select trigger */
+.select-trigger {
+  margin-left: auto;
+}
+
+.button{
+  display: flex;
+  flex-direction: row;
 }
