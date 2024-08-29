@@ -1,6 +1,5 @@
 :root {
   width: 100%;
-
 }
 
 body{
@@ -13,14 +12,12 @@ body{
   padding: 20px;
 }
 
-/* Styling for the header */
 .app-header {
   text-align: center;
   margin-bottom: 40px;
   justify-content: center;
 }
 
-/* Styling for the list of products */
 .product-list {
   list-style-type: none;
   padding: 0;
@@ -30,7 +27,6 @@ body{
   margin: 0 auto;
 }
 
-/* Styling for each product card */
 .product-card {
   background-color: white;
   border: 1px solid #ddd;
@@ -43,21 +39,18 @@ body{
   align-items: center;
 }
 
-/* Styling for the product image */
 .product-card img {
   max-width: 100%;
   border-radius: 8px;
   margin-bottom: 20px;
 }
 
-/* Styling for the product name */
 .product-card h2 {
   font-size: 1.5rem;
   margin: 0 0 10px;
   text-align: center;
 }
 
-/* Styling for the product price */
 .product-card p {
   font-size: 1.2rem;
   color: #333;
@@ -65,14 +58,12 @@ body{
   text-align: center;
 }
 
-/* Styling for the color selection container */
 .color-selection {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
 
-/* Styling for the color circles */
 .color-circle {
   width: 20px;
   height: 20px;
@@ -86,7 +77,6 @@ body{
   border: 2px solid black;
 }
 
-/* Styling for the select trigger */
 .select-trigger {
   margin-left: auto;
 }

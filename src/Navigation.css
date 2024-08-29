@@ -1,7 +1,7 @@
 .navigation-menu {
     display: flex;
     justify-content: center;
-    background-color: #333; /* Dark background for the navbar */
+    background-color: #333;
     padding: 10px 0;
     width: 100%;
   }
@@ -11,23 +11,22 @@
   }
   
   .navigation-menu-link {
-    color: white; /* White text color */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Bold text */
-    transition: color 0.3s ease; /* Smooth color transition */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
   }
   
   .navigation-menu-link:hover {
-    color: #f0f0f0; /* Light color on hover */
+    color: #f0f0f0;
   }
   
   .navigation-menu-trigger {
-    border: none; /* Remove default border */
-    background: none; /* Remove default background */
-    cursor: pointer; /* Pointer cursor on hover */
+    border: none;
+    background: none;
+    cursor: pointer;
   }
   
-  /* Optional: Add responsiveness */
   @media (max-width: 768px) {
     .navigation-menu {
       flex-direction: column;

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { SelectDemo } from '../SelectDemo';
 import { ShoppingCart } from 'lucide-react';
 import { Button } from '../../@/components/ui/button';
-import { Navigation } from '../Navigation';
+
 function Products({handleAddingCart}) {
+
     //Keeps products from API fetch and selectedColor from child "SelectDemo.jsx"
     const [products, setProducts] = useState([]);
     const [selectedColor, setSelectedColor] = useState({});
@@ -43,7 +44,7 @@ function Products({handleAddingCart}) {
             <p>Price: ${product.price}</p>
             <div className="color-selection">
               <div>Select Color:</div>
-              {/* Color is transfered to App.tsx from SelectDemo.tsx. When the color changes it triggers handleColorChange function.*/}
+              {/* Color is transfered to Product.tsx from SelectDemo.tsx. When the color changes it triggers handleColorChange function.*/}
               <SelectDemo
                 colorOptions={product.colorOptions}
                 setedColor={(color) => handleColorChange(product.id, color)}
