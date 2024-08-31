@@ -9,13 +9,20 @@ function Products({handleAddingCart}) {
     const [products, setProducts] = useState([]);
     const [selectedColor, setSelectedColor] = useState({});
     const [quantities, setQuantities] = useState({});
-  
+    //If I make the buttons from products.type when I apply the filter just one filtered product type remains and other disappear. To see all types I should use these 2 useStates:
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [activeFilter, setActiveFilter] = useState('all');
+    //To set unique types for filter buttons.
+    const uniqueTypes = [...new Set(products.map(product => product.type))];
+
     //Fetches data and store in product with using setProduct()
     useEffect(() => {
       fetch('http://localhost:3000/products')
         .then(response => response.json())
-        .then(data => setProducts(data));
-    }, []);
+        .then(data => {
+          setProducts(data),
+          setFilteredProducts(data);
+    })}, []);
   
     //Update color of the product and updates cart in App.jsx
     const handleColorChange = (productId, color) => {
@@ -32,12 +39,37 @@ function Products({handleAddingCart}) {
         [productId]: quantity
       }));
     };
+
+    const filterProducts = (type) => {
+      setActiveFilter(type);
+      if(type === 'all'){
+        setFilteredProducts(products)
+      } else {
+        fetch(`http://localhost:3000/products/type/${type}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+        return response.json();
+    })
+    .then(data => setFilteredProducts(data))
+    .catch(error => console.error('Fetch error:', error));
+      }
+  
+    }
   
   return (
     <div className="app-container">
       <h1 className="app-header">Products</h1>
+      <ul className="filter-buttons">
+      <Button onClick={() =>filterProducts('all')} className="button">All</Button>
+      {uniqueTypes.map((type, index) => (
+        <li key={index}><Button onClick={() =>filterProducts(type)} className="button">{type}</Button></li>
+      ))}
+      </ul>
+     
       <ul className="product-list">
-        {products.map(product => (
+        {filteredProducts.map(product => (
           <li key={product.id}  className="product-card">
             <img src={product.image} alt={product.name} />
             <h2>{product.name}</h2>
