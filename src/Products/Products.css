@@ -12,6 +12,17 @@ body{
     margin-bottom: 40px;
     justify-content: center;
   }
+
+  ul.filter-buttons{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 20px;
+  }
+
+  .filter-button{
+    background-color: #8080803b;
+  }
   
   .product-list {
     list-style-type: none;

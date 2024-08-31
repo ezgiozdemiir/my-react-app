@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SelectDemo } from '../SelectDemo';
 import { ShoppingCart } from 'lucide-react';
 import { Button } from '../../@/components/ui/button';
+import './Products.css'
 
 function Products({handleAddingCart}) {
 
@@ -62,9 +63,9 @@ function Products({handleAddingCart}) {
     <div className="app-container">
       <h1 className="app-header">Products</h1>
       <ul className="filter-buttons">
-      <Button onClick={() =>filterProducts('all')} className="button">All</Button>
+      <Button className="filter-button" onClick={() =>filterProducts('all')}>ALL</Button>
       {uniqueTypes.map((type, index) => (
-        <li key={index}><Button onClick={() =>filterProducts(type)} className="button">{type}</Button></li>
+        <li key={index}><Button className="filter-button" onClick={() =>filterProducts(type)}>{type.toUpperCase()}</Button></li>
       ))}
       </ul>
      
