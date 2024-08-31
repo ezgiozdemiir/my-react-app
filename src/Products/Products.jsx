@@ -68,8 +68,8 @@ function Products({handleAddingCart}) {
         <li key={index}><Button className="filter-button" onClick={() =>filterProducts(type)}>{type.toUpperCase()}</Button></li>
       ))}
       </ul>
-     
-      <ul className="product-list">
+     <div className="cards">
+         <ul className="product-list">
         {filteredProducts.map(product => (
           <li key={product.id}  className="product-card">
             <img src={product.image} alt={product.name} />
@@ -101,6 +101,8 @@ function Products({handleAddingCart}) {
           </li>
         ))}
       </ul>
+     </div>
+   
     </div>
   );
 }

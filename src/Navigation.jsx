@@ -25,6 +25,11 @@ export function Navigation() {
                 Cart
               </Link>
             </NavigationMenuItem>
+            <NavigationMenuItem style={{ margin: '0 15px' }}>
+              <Link to="/sign-in" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', transition: 'color 0.3s ease' }}>
+                Sign In
+              </Link>
+            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
       );
