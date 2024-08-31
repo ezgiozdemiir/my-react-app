@@ -62,12 +62,14 @@ function Products({handleAddingCart}) {
   return (
     <div className="app-container">
       <h1 className="app-header">Products</h1>
-      <ul className="filter-buttons">
+      <div className="filter-button-group">
+        <ul className="filter-buttons">
       <Button className="filter-button" onClick={() =>filterProducts('all')}>ALL</Button>
       {uniqueTypes.map((type, index) => (
         <li key={index}><Button className="filter-button" onClick={() =>filterProducts(type)}>{type.toUpperCase()}</Button></li>
       ))}
       </ul>
+      </div>
      <div className="cards">
          <ul className="product-list">
         {filteredProducts.map(product => (
