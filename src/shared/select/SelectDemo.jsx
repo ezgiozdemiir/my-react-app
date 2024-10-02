@@ -7,7 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
   SelectLabel,
-} from "../@/components/ui/select";
+} from "../../../@/components/ui/select";
 
 //colorOptions and setSelectedColor is transfered down to child from "App.jsx"
 export function SelectDemo({ colorOptions, setedColor }) {

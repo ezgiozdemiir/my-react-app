@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "../@/components/ui/navigation-menu";
+} from "../../../@/components/ui/navigation-menu";
 import './Navigation.css'
 
 export function Navigation() {

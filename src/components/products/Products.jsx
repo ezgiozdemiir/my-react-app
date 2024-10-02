@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { SelectDemo } from '../SelectDemo';
 import { ShoppingCart } from 'lucide-react';
-import { Button } from '../../@/components/ui/button';
 import './Products.css'
+import { Button } from '../../../@/components/ui/button';
+import { SelectDemo } from '../../shared/select/SelectDemo';
+
 
 function Products({handleAddingCart}) {
 

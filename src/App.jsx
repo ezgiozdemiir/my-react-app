@@ -1,9 +1,10 @@
 import './App.css';
-import Products from './Products/Products';
-import Cart from './Cart/Cart';
-import { Navigation } from './Navigation';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import Products from './components/products/Products';
+import Cart from './components/cart/Cart';
+import { Navigation } from './shared/navigation/Navigation';
 
 
  function App() {
