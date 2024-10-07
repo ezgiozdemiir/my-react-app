@@ -3,10 +3,11 @@ import { ShoppingCart } from 'lucide-react';
 import './Products.css'
 import { Button } from '../../../@/components/ui/button';
 import { SelectDemo } from '../../shared/select/SelectDemo';
+// import useCartStore from '@/src/store/CartStore';
+import useCartStore from '../../store/CartStore';
 
-
-function Products({handleAddingCart}) {
-
+function Products() {
+  const addToCart = useCartStore(state => state.addToCart);
     //Keeps products from API fetch and selectedColor from child "SelectDemo.jsx"
     const [products, setProducts] = useState([]);
     const [selectedColor, setSelectedColor] = useState({});
@@ -98,7 +99,7 @@ function Products({handleAddingCart}) {
                 />
               </label>
             </div>
-            <Button className="button"  onClick={() => handleAddingCart(product, selectedColor[product.id], quantities[product.id] || 1)}>
+            <Button className="button"  onClick={() => addToCart(product, selectedColor[product.id], quantities[product.id] || 1)}>
               <ShoppingCart className="cart-button-icon" /> Add Cart
             </Button>
           </li>
